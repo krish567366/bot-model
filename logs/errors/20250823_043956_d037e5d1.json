@@ -1,0 +1,8 @@
+{
+  "run_id": "d037e5d1",
+  "stage": "full_pipeline",
+  "error": "Component initialization failed",
+  "timestamp": "2025-08-23T04:39:56.866607",
+  "symbol": "TEST",
+  "dry_run": true
+}

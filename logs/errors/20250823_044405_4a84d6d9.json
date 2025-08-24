@@ -1,0 +1,8 @@
+{
+  "run_id": "4a84d6d9",
+  "stage": "full_pipeline",
+  "error": "Feature computation failed",
+  "timestamp": "2025-08-23T04:44:05.221812",
+  "symbol": "TEST",
+  "dry_run": true
+}

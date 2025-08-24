@@ -1,0 +1,13 @@
+{"asctime": "2025-08-23 10:11:12,084", "name": "orchestrator", "levelname": "INFO", "message": "Acquired lock: var\\locks\\start_full.lock"}
+{"asctime": "2025-08-23 10:11:12,085", "name": "orchestrator", "levelname": "INFO", "message": "Starting full pipeline for TEST (dry_run=True)"}
+{"asctime": "2025-08-23 10:11:12,139", "name": "orchestrator", "levelname": "INFO", "message": "Set random seeds to 42"}
+{"asctime": "2025-08-23 10:11:12,139", "name": "orchestrator", "levelname": "INFO", "message": "Initializing system components"}
+{"asctime": "2025-08-23 10:11:12,140", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Storage manager initialized"}
+{"asctime": "2025-08-23 10:11:12,193", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Data pipeline initialized"}
+{"asctime": "2025-08-23 10:11:12,194", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Feature engine initialized"}
+{"asctime": "2025-08-23 10:11:12,194", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Training pipeline initialized"}
+{"asctime": "2025-08-23 10:11:12,195", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Inference engine initialized"}
+{"asctime": "2025-08-23 10:11:12,196", "name": "orchestrator", "levelname": "ERROR", "message": "Component initialization failed: 'BacktestConfig' object has no attribute 'exchanges'", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 294, in _initialize_components\n    self.backtest_engine = BacktestEngine(self.settings.backtest, self.storage)\n                           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\trading-bot\\arbi\\core\\backtest.py\", line 335, in __init__\n    self._initialize_balances()\n    ~~~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"D:\\trading-bot\\arbi\\core\\backtest.py\", line 339, in _initialize_balances\n    for exchange in self.config.exchanges:\n                    ^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'BacktestConfig' object has no attribute 'exchanges'"}
+{"asctime": "2025-08-23 10:11:12,201", "name": "orchestrator", "levelname": "ERROR", "message": "Error in full_pipeline: Component initialization failed", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 734, in run_full_pipeline\n    raise Exception(\"Component initialization failed\")\nException: Component initialization failed"}
+{"asctime": "2025-08-23 10:11:12,215", "name": "orchestrator", "levelname": "ERROR", "message": "Failed to save run state: Error binding parameter 8: type 'dict' is not supported"}
+{"asctime": "2025-08-23 10:11:12,218", "name": "orchestrator", "levelname": "INFO", "message": "Released lock"}

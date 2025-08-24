@@ -1,0 +1,8 @@
+{
+  "run_id": "5977062c",
+  "stage": "full_pipeline",
+  "error": "Model selection/training failed",
+  "timestamp": "2025-08-23T04:48:26.136374",
+  "symbol": "TEST",
+  "dry_run": true
+}

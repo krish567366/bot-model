@@ -1,0 +1,29 @@
+{"asctime": "2025-08-23 10:29:09,591", "name": "orchestrator", "levelname": "INFO", "message": "Acquired lock: var\\locks\\start_full.lock"}
+{"asctime": "2025-08-23 10:29:09,593", "name": "orchestrator", "levelname": "INFO", "message": "Starting full pipeline for TEST (dry_run=True)"}
+{"asctime": "2025-08-23 10:29:09,647", "name": "orchestrator", "levelname": "INFO", "message": "Set random seeds to 42"}
+{"asctime": "2025-08-23 10:29:09,648", "name": "orchestrator", "levelname": "INFO", "message": "Initializing system components"}
+{"asctime": "2025-08-23 10:29:09,649", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Storage manager initialized"}
+{"asctime": "2025-08-23 10:29:09,673", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Data pipeline initialized"}
+{"asctime": "2025-08-23 10:29:09,704", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Feature engine initialized"}
+{"asctime": "2025-08-23 10:29:09,705", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Training pipeline initialized"}
+{"asctime": "2025-08-23 10:29:09,706", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Inference engine initialized"}
+{"asctime": "2025-08-23 10:29:09,706", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Backtest engine initialized"}
+{"asctime": "2025-08-23 10:29:09,707", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Signal manager initialized"}
+{"asctime": "2025-08-23 10:29:09,707", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Order manager initialized (dry_run=True)"}
+{"asctime": "2025-08-23 10:29:09,707", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Portfolio manager initialized"}
+{"asctime": "2025-08-23 10:29:09,708", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Monitoring system initialized"}
+{"asctime": "2025-08-23 10:29:09,708", "name": "orchestrator", "levelname": "INFO", "message": "Fetching historical data for TEST"}
+{"asctime": "2025-08-23 10:29:09,708", "name": "orchestrator", "levelname": "INFO", "message": "Generating synthetic test data"}
+{"asctime": "2025-08-23 10:29:09,730", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Fetched 100 rows of historical data"}
+{"asctime": "2025-08-23 10:29:09,731", "name": "orchestrator", "levelname": "INFO", "message": "Computing features"}
+{"asctime": "2025-08-23 10:29:09,751", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Computed and stored 20 real features"}
+{"asctime": "2025-08-23 10:29:09,753", "name": "orchestrator", "levelname": "INFO", "message": "Deciding on model training/selection"}
+{"asctime": "2025-08-23 10:29:09,753", "name": "orchestrator", "levelname": "INFO", "message": "Fast test mode: Skipping model training"}
+{"asctime": "2025-08-23 10:29:09,754", "name": "orchestrator", "levelname": "INFO", "message": "Running inference with model fast_test_mock_model"}
+{"asctime": "2025-08-23 10:29:09,755", "name": "orchestrator", "levelname": "INFO", "message": "Using mock model for fast test"}
+{"asctime": "2025-08-23 10:29:09,803", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Generated 6 signals"}
+{"asctime": "2025-08-23 10:29:09,803", "name": "orchestrator", "levelname": "INFO", "message": "Running backtest"}
+{"asctime": "2025-08-23 10:29:09,847", "name": "orchestrator", "levelname": "ERROR", "message": "Backtest failed: unsupported operand type(s) for +=: 'decimal.Decimal' and 'float'", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 653, in _run_backtest\n    result = await self.backtest_engine.run_backtest(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        data_source=f\"historical_data_{self.symbol}\"\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"D:\\trading-bot\\arbi\\core\\backtest.py\", line 351, in run_backtest\n    await self._process_events()\n  File \"D:\\trading-bot\\arbi\\core\\backtest.py\", line 524, in _process_events\n    await self._take_portfolio_snapshot()\n  File \"D:\\trading-bot\\arbi\\core\\backtest.py\", line 818, in _take_portfolio_snapshot\n    total_value = self._calculate_portfolio_value()\n  File \"D:\\trading-bot\\arbi\\core\\backtest.py\", line 844, in _calculate_portfolio_value\n    total_value += amount\nTypeError: unsupported operand type(s) for +=: 'decimal.Decimal' and 'float'"}
+{"asctime": "2025-08-23 10:29:09,850", "name": "orchestrator", "levelname": "ERROR", "message": "Error in full_pipeline: Backtest failed", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 873, in run_full_pipeline\n    raise Exception(\"Backtest failed\")\nException: Backtest failed"}
+{"asctime": "2025-08-23 10:29:09,860", "name": "orchestrator", "levelname": "INFO", "message": "Run state saved to runs\\20250823_045909_0736bc43\\run_manifest.json"}
+{"asctime": "2025-08-23 10:29:09,863", "name": "orchestrator", "levelname": "INFO", "message": "Released lock"}

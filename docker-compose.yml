@@ -1,0 +1,157 @@
+version: '3.8'
+
+services:
+  # Main trading application
+  arbitrage-bot:
+    build: .
+    container_name: arbitrage-trading-bot
+    restart: unless-stopped
+    ports:
+      - "8000:8000"  # API server
+      - "8001:8001"  # Prometheus metrics
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app
+      - DATABASE_URL=postgresql://arbitrage:arbitrage123@postgres:5432/arbitrage
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./backups:/app/backups
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - arbitrage-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Streamlit dashboard
+  dashboard:
+    build: .
+    container_name: arbitrage-dashboard
+    restart: unless-stopped
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    command: ["streamlit", "run", "arbi/ui/dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    depends_on:
+      - arbitrage-bot
+    networks:
+      - arbitrage-network
+
+  # PostgreSQL database
+  postgres:
+    image: postgres:15-alpine
+    container_name: arbitrage-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=arbitrage
+      - POSTGRES_USER=arbitrage
+      - POSTGRES_PASSWORD=arbitrage123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - arbitrage-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U arbitrage"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis for caching and message queuing
+  redis:
+    image: redis:7-alpine
+    container_name: arbitrage-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass arbitrage123
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - arbitrage-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Prometheus monitoring
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: arbitrage-prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - arbitrage-network
+
+  # Grafana dashboards
+  grafana:
+    image: grafana/grafana:latest
+    container_name: arbitrage-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+    networks:
+      - arbitrage-network
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: arbitrage-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./certs:/etc/nginx/certs
+    depends_on:
+      - arbitrage-bot
+      - dashboard
+      - grafana
+    networks:
+      - arbitrage-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+
+networks:
+  arbitrage-network:
+    driver: bridge

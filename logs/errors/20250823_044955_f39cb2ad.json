@@ -1,0 +1,8 @@
+{
+  "run_id": "f39cb2ad",
+  "stage": "full_pipeline",
+  "error": "Backtest failed",
+  "timestamp": "2025-08-23T04:49:55.644870",
+  "symbol": "TEST",
+  "dry_run": true
+}

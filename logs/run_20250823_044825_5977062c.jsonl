@@ -1,0 +1,25 @@
+{"asctime": "2025-08-23 10:18:25,875", "name": "orchestrator", "levelname": "INFO", "message": "Acquired lock: var\\locks\\start_full.lock"}
+{"asctime": "2025-08-23 10:18:25,878", "name": "orchestrator", "levelname": "INFO", "message": "Starting full pipeline for TEST (dry_run=True)"}
+{"asctime": "2025-08-23 10:18:25,980", "name": "orchestrator", "levelname": "INFO", "message": "Set random seeds to 42"}
+{"asctime": "2025-08-23 10:18:25,981", "name": "orchestrator", "levelname": "INFO", "message": "Initializing system components"}
+{"asctime": "2025-08-23 10:18:25,982", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Storage manager initialized"}
+{"asctime": "2025-08-23 10:18:26,021", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Data pipeline initialized"}
+{"asctime": "2025-08-23 10:18:26,053", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Feature engine initialized"}
+{"asctime": "2025-08-23 10:18:26,054", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Training pipeline initialized"}
+{"asctime": "2025-08-23 10:18:26,056", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Inference engine initialized"}
+{"asctime": "2025-08-23 10:18:26,056", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Backtest engine initialized"}
+{"asctime": "2025-08-23 10:18:26,057", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Signal manager initialized"}
+{"asctime": "2025-08-23 10:18:26,058", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Order manager initialized (dry_run=True)"}
+{"asctime": "2025-08-23 10:18:26,059", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Portfolio manager initialized"}
+{"asctime": "2025-08-23 10:18:26,061", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Monitoring system initialized"}
+{"asctime": "2025-08-23 10:18:26,062", "name": "orchestrator", "levelname": "INFO", "message": "Fetching historical data for TEST"}
+{"asctime": "2025-08-23 10:18:26,063", "name": "orchestrator", "levelname": "INFO", "message": "Generating synthetic test data"}
+{"asctime": "2025-08-23 10:18:26,091", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Fetched 100 rows of historical data"}
+{"asctime": "2025-08-23 10:18:26,092", "name": "orchestrator", "levelname": "INFO", "message": "Computing features"}
+{"asctime": "2025-08-23 10:18:26,092", "name": "orchestrator", "levelname": "WARNING", "message": "Feature extraction returned None, creating mock features"}
+{"asctime": "2025-08-23 10:18:26,122", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Computed and stored 3 features"}
+{"asctime": "2025-08-23 10:18:26,123", "name": "orchestrator", "levelname": "INFO", "message": "Deciding on model training/selection"}
+{"asctime": "2025-08-23 10:18:26,124", "name": "orchestrator", "levelname": "ERROR", "message": "Model decision failed: 'ModelManager' object has no attribute 'get_latest_model'", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 425, in _decide_retrain\n    latest_model = model_registry.get_latest_model(self.symbol, self.interval)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'ModelManager' object has no attribute 'get_latest_model'"}
+{"asctime": "2025-08-23 10:18:26,134", "name": "orchestrator", "levelname": "ERROR", "message": "Error in full_pipeline: Model selection/training failed", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 769, in run_full_pipeline\n    raise Exception(\"Model selection/training failed\")\nException: Model selection/training failed"}
+{"asctime": "2025-08-23 10:18:26,149", "name": "orchestrator", "levelname": "INFO", "message": "Run state saved to runs\\20250823_044825_5977062c\\run_manifest.json"}
+{"asctime": "2025-08-23 10:18:26,151", "name": "orchestrator", "levelname": "INFO", "message": "Released lock"}

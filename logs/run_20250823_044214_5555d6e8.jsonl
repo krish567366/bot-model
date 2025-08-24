@@ -1,0 +1,15 @@
+{"asctime": "2025-08-23 10:12:14,120", "name": "orchestrator", "levelname": "INFO", "message": "Acquired lock: var\\locks\\start_full.lock"}
+{"asctime": "2025-08-23 10:12:14,122", "name": "orchestrator", "levelname": "INFO", "message": "Starting full pipeline for TEST (dry_run=True)"}
+{"asctime": "2025-08-23 10:12:14,181", "name": "orchestrator", "levelname": "INFO", "message": "Set random seeds to 42"}
+{"asctime": "2025-08-23 10:12:14,182", "name": "orchestrator", "levelname": "INFO", "message": "Initializing system components"}
+{"asctime": "2025-08-23 10:12:14,183", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Storage manager initialized"}
+{"asctime": "2025-08-23 10:12:14,207", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Data pipeline initialized"}
+{"asctime": "2025-08-23 10:12:14,208", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Feature engine initialized"}
+{"asctime": "2025-08-23 10:12:14,209", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Training pipeline initialized"}
+{"asctime": "2025-08-23 10:12:14,209", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Inference engine initialized"}
+{"asctime": "2025-08-23 10:12:14,210", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Backtest engine initialized"}
+{"asctime": "2025-08-23 10:12:14,211", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Signal manager initialized"}
+{"asctime": "2025-08-23 10:12:14,212", "name": "orchestrator", "levelname": "ERROR", "message": "Component initialization failed: OrderManager.__init__() got an unexpected keyword argument 'paper_mode'", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 302, in _initialize_components\n    self.order_manager = OrderManager(paper_mode=self.dry_run)\n                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: OrderManager.__init__() got an unexpected keyword argument 'paper_mode'"}
+{"asctime": "2025-08-23 10:12:14,214", "name": "orchestrator", "levelname": "ERROR", "message": "Error in full_pipeline: Component initialization failed", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 734, in run_full_pipeline\n    raise Exception(\"Component initialization failed\")\nException: Component initialization failed"}
+{"asctime": "2025-08-23 10:12:14,220", "name": "orchestrator", "levelname": "ERROR", "message": "Failed to save run state: Error binding parameter 8: type 'dict' is not supported"}
+{"asctime": "2025-08-23 10:12:14,222", "name": "orchestrator", "levelname": "INFO", "message": "Released lock"}

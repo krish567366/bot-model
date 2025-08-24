@@ -1,0 +1,13 @@
+{"asctime": "2025-08-23 10:09:56,667", "name": "orchestrator", "levelname": "INFO", "message": "Acquired lock: var\\locks\\start_full.lock"}
+{"asctime": "2025-08-23 10:09:56,669", "name": "orchestrator", "levelname": "INFO", "message": "Starting full pipeline for TEST (dry_run=True)"}
+{"asctime": "2025-08-23 10:09:56,761", "name": "orchestrator", "levelname": "INFO", "message": "Set random seeds to 42"}
+{"asctime": "2025-08-23 10:09:56,762", "name": "orchestrator", "levelname": "INFO", "message": "Initializing system components"}
+{"asctime": "2025-08-23 10:09:56,764", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Storage manager initialized"}
+{"asctime": "2025-08-23 10:09:56,856", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Data pipeline initialized"}
+{"asctime": "2025-08-23 10:09:56,858", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Feature engine initialized"}
+{"asctime": "2025-08-23 10:09:56,859", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Training pipeline initialized"}
+{"asctime": "2025-08-23 10:09:56,860", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Inference engine initialized"}
+{"asctime": "2025-08-23 10:09:56,861", "name": "orchestrator", "levelname": "ERROR", "message": "Component initialization failed: BacktestEngine.__init__() missing 2 required positional arguments: 'config' and 'storage'", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 294, in _initialize_components\n    self.backtest_engine = BacktestEngine()\n                           ~~~~~~~~~~~~~~^^\nTypeError: BacktestEngine.__init__() missing 2 required positional arguments: 'config' and 'storage'"}
+{"asctime": "2025-08-23 10:09:56,864", "name": "orchestrator", "levelname": "ERROR", "message": "Error in full_pipeline: Component initialization failed", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 734, in run_full_pipeline\n    raise Exception(\"Component initialization failed\")\nException: Component initialization failed"}
+{"asctime": "2025-08-23 10:09:56,877", "name": "orchestrator", "levelname": "ERROR", "message": "Failed to save run state: 'StorageManager' object has no attribute 'save_table'"}
+{"asctime": "2025-08-23 10:09:56,879", "name": "orchestrator", "levelname": "INFO", "message": "Released lock"}

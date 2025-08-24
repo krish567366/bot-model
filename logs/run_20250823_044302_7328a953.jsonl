@@ -1,0 +1,22 @@
+{"asctime": "2025-08-23 10:13:02,677", "name": "orchestrator", "levelname": "INFO", "message": "Acquired lock: var\\locks\\start_full.lock"}
+{"asctime": "2025-08-23 10:13:02,678", "name": "orchestrator", "levelname": "INFO", "message": "Starting full pipeline for TEST (dry_run=True)"}
+{"asctime": "2025-08-23 10:13:02,762", "name": "orchestrator", "levelname": "INFO", "message": "Set random seeds to 42"}
+{"asctime": "2025-08-23 10:13:02,762", "name": "orchestrator", "levelname": "INFO", "message": "Initializing system components"}
+{"asctime": "2025-08-23 10:13:02,763", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Storage manager initialized"}
+{"asctime": "2025-08-23 10:13:02,786", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Data pipeline initialized"}
+{"asctime": "2025-08-23 10:13:02,816", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Feature engine initialized"}
+{"asctime": "2025-08-23 10:13:02,817", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Training pipeline initialized"}
+{"asctime": "2025-08-23 10:13:02,818", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Inference engine initialized"}
+{"asctime": "2025-08-23 10:13:02,819", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Backtest engine initialized"}
+{"asctime": "2025-08-23 10:13:02,820", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Signal manager initialized"}
+{"asctime": "2025-08-23 10:13:02,820", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Order manager initialized (dry_run=True)"}
+{"asctime": "2025-08-23 10:13:02,821", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Portfolio manager initialized"}
+{"asctime": "2025-08-23 10:13:02,822", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Monitoring system initialized"}
+{"asctime": "2025-08-23 10:13:02,823", "name": "orchestrator", "levelname": "INFO", "message": "Fetching historical data for TEST"}
+{"asctime": "2025-08-23 10:13:02,824", "name": "orchestrator", "levelname": "INFO", "message": "Generating synthetic test data"}
+{"asctime": "2025-08-23 10:13:02,865", "name": "orchestrator", "levelname": "INFO", "message": "\u2705 Fetched 100 rows of historical data"}
+{"asctime": "2025-08-23 10:13:02,866", "name": "orchestrator", "levelname": "INFO", "message": "Computing features"}
+{"asctime": "2025-08-23 10:13:02,866", "name": "orchestrator", "levelname": "ERROR", "message": "Feature computation failed: 'FeatureEngine' object has no attribute 'extract_features'", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 367, in _compute_features\n    feature_set = self.feature_engine.extract_features(market_data, self.symbol)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'FeatureEngine' object has no attribute 'extract_features'"}
+{"asctime": "2025-08-23 10:13:02,870", "name": "orchestrator", "levelname": "ERROR", "message": "Error in full_pipeline: Feature computation failed", "exc_info": "Traceback (most recent call last):\n  File \"D:\\trading-bot\\start.py\", line 743, in run_full_pipeline\n    raise Exception(\"Feature computation failed\")\nException: Feature computation failed"}
+{"asctime": "2025-08-23 10:13:02,882", "name": "orchestrator", "levelname": "ERROR", "message": "Failed to save run state: Error binding parameter 8: type 'dict' is not supported"}
+{"asctime": "2025-08-23 10:13:02,884", "name": "orchestrator", "levelname": "INFO", "message": "Released lock"}

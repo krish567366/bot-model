@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "feature_categories": {
+    "technical": {
+      "description": "Technical analysis indicators",
+      "features": [
+        {"name": "sma_5", "dtype": "float64", "nullable": false, "description": "5-period Simple Moving Average"},
+        {"name": "sma_10", "dtype": "float64", "nullable": false, "description": "10-period Simple Moving Average"},
+        {"name": "sma_20", "dtype": "float64", "nullable": false, "description": "20-period Simple Moving Average"},
+        {"name": "sma_50", "dtype": "float64", "nullable": false, "description": "50-period Simple Moving Average"},
+        {"name": "ema_5", "dtype": "float64", "nullable": false, "description": "5-period Exponential Moving Average"},
+        {"name": "ema_10", "dtype": "float64", "nullable": false, "description": "10-period Exponential Moving Average"},
+        {"name": "ema_20", "dtype": "float64", "nullable": false, "description": "20-period Exponential Moving Average"},
+        {"name": "ema_50", "dtype": "float64", "nullable": false, "description": "50-period Exponential Moving Average"},
+        {"name": "rsi", "dtype": "float64", "nullable": false, "description": "14-period Relative Strength Index"},
+        {"name": "macd", "dtype": "float64", "nullable": false, "description": "MACD line"},
+        {"name": "macd_signal", "dtype": "float64", "nullable": false, "description": "MACD signal line"},
+        {"name": "macd_histogram", "dtype": "float64", "nullable": false, "description": "MACD histogram"},
+        {"name": "bb_upper", "dtype": "float64", "nullable": false, "description": "Bollinger Bands upper"},
+        {"name": "bb_middle", "dtype": "float64", "nullable": false, "description": "Bollinger Bands middle"},
+        {"name": "bb_lower", "dtype": "float64", "nullable": false, "description": "Bollinger Bands lower"},
+        {"name": "bb_position", "dtype": "float64", "nullable": false, "description": "Bollinger Band position (0-1)"},
+        {"name": "atr", "dtype": "float64", "nullable": false, "description": "14-period Average True Range"},
+        {"name": "adx", "dtype": "float64", "nullable": false, "description": "14-period Average Directional Index"}
+      ]
+    },
+    "price": {
+      "description": "Price-based features",
+      "features": [
+        {"name": "current_price", "dtype": "float64", "nullable": false, "description": "Current close price"},
+        {"name": "price_change", "dtype": "float64", "nullable": false, "description": "Price change ratio from previous period"},
+        {"name": "high_low_spread", "dtype": "float64", "nullable": false, "description": "High-Low spread ratio"},
+        {"name": "open_close_spread", "dtype": "float64", "nullable": false, "description": "Open-Close spread ratio"}
+      ]
+    },
+    "volume": {
+      "description": "Volume-based features",
+      "features": [
+        {"name": "volume_ratio", "dtype": "float64", "nullable": false, "description": "Current volume / 20-period average volume"},
+        {"name": "volume_sma_20", "dtype": "float64", "nullable": false, "description": "20-period volume moving average"},
+        {"name": "volume_weighted_price", "dtype": "float64", "nullable": false, "description": "Volume weighted average price"}
+      ]
+    }
+  },
+  "required_ohlcv_columns": ["open", "high", "low", "close", "volume", "timestamp"],
+  "minimum_lookback_periods": 50,
+  "feature_computation_order": [
+    "price",
+    "volume", 
+    "technical"
+  ],
+  "validation_rules": {
+    "price_bounds": {"min": 0.0001, "max": 1000000},
+    "volume_bounds": {"min": 0, "max": 1e12},
+    "rsi_bounds": {"min": 0, "max": 100},
+    "bb_position_bounds": {"min": 0, "max": 1}
+  }
+}
