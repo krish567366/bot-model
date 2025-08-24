@@ -238,7 +238,8 @@ class CCXTSource(DataSource):
             try:
                 self.exchanges['binance'] = ccxt.binance()
                 self.exchanges['kraken'] = ccxt.kraken()
-                self.exchanges['coinbase'] = ccxt.coinbasepro()
+                # Updated: coinbasepro is deprecated, use coinbase instead
+                self.exchanges['coinbase'] = ccxt.coinbase()
                 logger.info("CCXT exchanges initialized")
             except Exception as e:
                 logger.error(f"Error initializing CCXT exchanges: {e}")
